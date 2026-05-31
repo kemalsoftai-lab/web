@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const BINANCE_BASE = "https://api.binance.com";
+const BINANCE_BASE = "https://data-api.binance.vision";
 function normalizeTicker(t) {
   return {
     symbol: t.symbol,
@@ -59,7 +59,37 @@ router.get("/ticker/:symbol", async (req, res, next) => {
       return res.status(400).json({ message: "Geçersiz sembol" });
     }
 
-    const response = await fetch(`${BINANCE_BASE}/api/v3/ticker/24hr?symbol=${symbol}`);
+   const symbols = [
+  "BTCUSDT",
+  "ETHUSDT",
+  "BNBUSDT",
+  "SOLUSDT",
+  "XRPUSDT",
+  "ADAUSDT",
+  "DOGEUSDT",
+  "AVAXUSDT",
+  "LINKUSDT",
+  "DOTUSDT",
+  "TRXUSDT",
+  "MATICUSDT",
+  "LTCUSDT",
+  "BCHUSDT",
+  "UNIUSDT",
+  "ATOMUSDT",
+  "ETCUSDT",
+  "FILUSDT",
+  "APTUSDT",
+  "ARBUSDT"
+];
+
+const url = `${BINANCE_BASE}/api/v3/ticker/24hr?symbols=${encodeURIComponent(JSON.stringify(symbols))}`;
+
+const response = await fetch(url, {
+  headers: {
+    "Accept": "application/json",
+    "User-Agent": "mum-avcisi-market-app"
+  }
+});
 
     if (!response.ok) {
       return res.status(404).json({ message: "Sembol bulunamadı" });
