@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "https://senin-servis-adin.onrender.com/api";
 
 let mode = "login";
 let token = localStorage.getItem("token") || "";
