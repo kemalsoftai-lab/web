@@ -1,4 +1,4 @@
-const API_BASE = "https://web-qwmi.onrender.com";
+const API_BASE = "https://web-qwmi.onrender.com/api";
 
 let mode = "login";
 let token = localStorage.getItem("token") || "";
