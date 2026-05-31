@@ -1,4 +1,4 @@
-const API_BASE = "https://senin-servis-adin.onrender.com/api";
+const API_BASE = "https://web-qwmi.onrender.com";
 
 let mode = "login";
 let token = localStorage.getItem("token") || "";
